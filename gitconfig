@@ -1,0 +1,22 @@
+[push]
+	default = current
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	cp = cherry-pick
+	sm = submodule
+	pl = pull
+	ps = push
+	rb = rebase
+	df = diff
+[core]
+	autocrlf = input
+[credential]
+	helper = osxkeychain
+[rerere]
+	enabled = true
+[pager]
+	branch = false
+	tag = false
