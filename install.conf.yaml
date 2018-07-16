@@ -5,5 +5,8 @@
         path: gitconfig
     ~/.oh-my-zsh:
         path: oh-my-zsh/
+    ~/.ssh/config:
+        path: ssh/config
+        create: true
     ~/.zshrc:
         path: zshrc
