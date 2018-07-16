@@ -1,1 +1,7 @@
 - clean: ['~']
+
+- link:
+    ~/.oh-my-zsh:
+        path: oh-my-zsh/
+    ~/.zshrc:
+        path: zshrc
