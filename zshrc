@@ -59,8 +59,19 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  docker
+  docker-compose
   git
+  go
+  kitchen
+  maven
+  npm
+  vagrant
 )
+# CHECK THESE OUT:
+#   zsh-navigation-tools
+#   colored-man-pages
+#   thefuck
 
 source $ZSH/oh-my-zsh.sh
 
@@ -168,4 +179,87 @@ alias gtgl='git tag --list'
 alias gtgd='git tag --delete'
 alias gur='git update-ref'
 alias gur-develop='git update-ref refs/heads/development origin/develop'
+alias gur-development='git update-ref refs/heads/development origin/development'
 alias gur-master='git update-ref refs/heads/master origin/master'
+alias gur-production='git update-ref refs/heads/production origin/production'
+alias k='kitchen'
+alias kcr='kitchen create'
+alias kcv='kitchen converge'
+alias kdy='kitchen destroy'
+alias klg='kitchen login'
+alias kln='kitchen login'
+alias kls='kitchen list'
+alias ksp='kitchen setup'
+alias kvy='kitchen verify'
+alias la='ls -laFh'
+alias latr='ls -laFhtr'
+alias ll='ls -lFh'
+alias lltr='ls -lFhtr'
+alias vst='vagrant status'
+alias v='vagrant'
+alias vdy='vagrant destroy'
+alias vdY='vagrant destroy --force'
+alias vh='vagrant halt'
+alias vpl='vagrant plugin'
+alias vplin='vagrant plugin install'
+alias vplls='vagrant plugin list'
+alias vplrm='vagrant plugin uninstall'
+alias vplup='vagrant plugin update'
+alias vpr='vagrant provision'
+alias vssh='vagrant ssh'
+alias vst='vagrant status'
+alias vup='vagrant up'
+
+
+
+### Homebrew ###
+
+# Software should be installed to the main Applications directory (default would only be the users Applications directory)
+export HOMEBREW_CASK_OPTS='--appdir=/Applications'
+
+
+
+### Development environment ###
+
+# Tools/Software
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/
+export GRADLE_HOME=/opt/gradle-2.12
+export SENCHA_CMD=/opt/Sencha/Cmd
+
+# Go data/packages directory
+#export GOPATH=${HOME}/.go
+#export GOBIN=${GOPATH}/bin
+
+# Extend the path
+export PATH=${GRADLE_HOME}/bin:${JAVA_HOME}/bin:${GOPATH}/bin:${PATH}
+#export PATH=${HOME}/bin/public:${GRADLE_HOME}/bin:${JAVA_HOME}/bin:${GOPATH}/bin:${SENCHA_CMD}:${PATH}
+#PATH=${HOME}/bin:${GOPATH}/bin:${ANT_HOME}/bin:${GRADLE_HOME}/bin:${JAVA_HOME}/bin:${M2_HOME}/bin:${PATH}
+
+# Provide more memory for Maven builds - basically required for CoreMedia builds.
+export MAVEN_OPTS=-Xmx2048m
+
+
+
+# Tab completion ... (to be examined)
+#zstyle ':completion:*' completer _complete _ignored _files
+#zstyle ':completion:*' special-dirs true
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+if [ -d "$SDKMAN_DIR" ]; then
+  [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+else
+  echo
+  echo "SDKMAN! is not installed. Please call:"
+  echo "  curl -s \"https://get.sdkman.io\" | bash"
+  echo
+fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# Source the RC file that sets the custom environment for each project.
+source $HOME/bin/public/assets/projects/rcfile
