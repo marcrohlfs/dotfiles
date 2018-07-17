@@ -1,6 +1,11 @@
 - clean: ['~']
 
 - link:
+    ~/.atom/config.cson:
+        path: atom/config.cson
+        create: true
+        relink: false
+        force: false
     ~/.gitconfig:
         path: gitconfig
     ~/.oh-my-zsh:
