@@ -7,5 +7,7 @@
         path: oh-my-zsh/
     ~/.ssh:
         path: ssh/
+    ~/.vimrc:
+        path: vimrc
     ~/.zshrc:
         path: zshrc
