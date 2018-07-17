@@ -186,3 +186,14 @@ alias la='ls -laFh'
 alias latr='ls -laFhtr'
 alias ll='ls -lFh'
 alias lltr='ls -lFhtr'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+if [ -d "$SDKMAN_DIR" ]; then
+  [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+else
+  echo
+  echo "SDKMAN! is not installed. Please call:"
+  echo "  curl -s \"https://get.sdkman.io\" | bash"
+  echo
+fi
