@@ -2,3 +2,6 @@
 
 # SSH
 /ssh/known_hosts
+
+# Custom
+/tmp/
