@@ -10,8 +10,9 @@
         path: gitconfig
     ~/.oh-my-zsh:
         path: oh-my-zsh/
-    ~/.ssh/config:
-        path: ssh/config
-        create: true
+    ~/.ssh:
+        path: ssh/
+    ~/.vimrc:
+        path: vimrc
     ~/.zshrc:
         path: zshrc

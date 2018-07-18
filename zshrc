@@ -49,7 +49,7 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -59,13 +59,16 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  common-aliases
   docker
   docker-compose
+  extract
   git
   go
   kitchen
   maven
   npm
+  osx
   vagrant
 )
 # CHECK THESE OUT:
@@ -76,6 +79,16 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# Avoid duplicates in history
+setopt HIST_IGNORE_ALL_DUPS
+
+# Add horizontal line to prompt
+setopt promptsubst
+PS1=$'${(r:$COLUMNS::\u2500:)}'$PS1
+
+# Tab completion for 'cd ..'
+zstyle ':completion:*' special-dirs true
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
