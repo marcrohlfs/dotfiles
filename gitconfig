@@ -15,8 +15,16 @@
 	autocrlf = input
 [credential]
 	helper = osxkeychain
+[http]
+	postBuffer = 1048576000
+[branch]
+	autoSetupRebase = remote
+[merge]
+	renamelimit = 10000
 [rerere]
 	enabled = true
+[pull]
+	rebase = true
 [pager]
 	branch = false
 	tag = false
