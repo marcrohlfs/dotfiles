@@ -190,6 +190,10 @@ alias latr='ls -laFhtr'
 alias ll='ls -lFh'
 alias lltr='ls -lFhtr'
 
+# Development environment
+export _JAVA_OPTIONS='-Djava.net.preferIPv4Stack=true -Djava.awt.headless=true'
+export MAVEN_OPTS='-ms256m -mx2048m -Dfile.encoding=UTF-8 -Djava.awt.headless=true'
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 if [ -d "$SDKMAN_DIR" ]; then
