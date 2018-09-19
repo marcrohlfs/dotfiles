@@ -195,6 +195,9 @@ alias latr='ls -laFhtr'
 alias ll='ls -lFh'
 alias lltr='ls -lFhtr'
 
+# Install Homebrew casks to the main /Applications directory (instead of ~/Applications)
+export HOMEBREW_CASK_OPTS='--appdir=/Applications'
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 if [ -d "$SDKMAN_DIR" ]; then
