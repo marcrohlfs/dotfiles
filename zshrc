@@ -89,6 +89,8 @@ plugins=(
   colorize
   common-aliases
   direnv
+  docker
+  docker-compose
   extract
   git
   git-prompt
