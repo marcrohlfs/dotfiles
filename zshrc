@@ -102,6 +102,7 @@ plugins=(
   sdk
   systemadmin
   timer
+  vagrant
 )
 [[ -n ${JIRA_URL} ]] && plugins+=(jira)
 [[ -n ${ZSH_ADDITIONAL_PLUGINS[*]} ]] && plugins+=(${ZSH_ADDITIONAL_PLUGINS})
