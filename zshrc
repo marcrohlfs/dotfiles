@@ -61,6 +61,8 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(
   command-not-found
   common-aliases
+  docker
+  docker-compose
   extract
   git
   osx
@@ -109,6 +111,19 @@ export PATH=${HOME}/bin/public:${PATH}
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias d='docker'
+alias dc='docker-compose'
+alias dim='docker image'
+alias dimp='docker image prune'
+alias dims='docker images'
+alias dlg='docker logs'
+alias dlgf='docker logs --follow'
+alias dps='docker ps'
+alias dpsa='docker ps --all'
+alias drm='docker rm'
+alias drn='docker run'
+alias dsp='docker stop'
+alias dst='docker start'
 alias gad='git add'
 alias gada='git add --all'
 alias gbr='git branch'
