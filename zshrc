@@ -147,6 +147,10 @@ export LANG=en_US.UTF-8
 # Install Homebrew casks to the main /Applications directory (instead of ~/Applications)
 export HOMEBREW_CASK_OPTS='--appdir=/Applications'
 
+# Development environment
+export _JAVA_OPTIONS='-Djava.net.preferIPv4Stack=true -Djava.awt.headless=true'
+export MAVEN_OPTS='-Xms256m -Xmx2048m -Dfile.encoding=UTF-8 -Djava.awt.headless=true'
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
