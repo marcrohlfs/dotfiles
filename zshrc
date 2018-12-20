@@ -67,6 +67,7 @@ plugins=(
   git
   osx
   vagrant
+  yarn
 )
 
 source $ZSH/oh-my-zsh.sh
