@@ -194,6 +194,7 @@ alias la='ls -laFh'
 alias latr='ls -laFhtr'
 alias ll='ls -lFh'
 alias lltr='ls -lFhtr'
+unalias rm
 
 # Install Homebrew casks to the main /Applications directory (instead of ~/Applications)
 export HOMEBREW_CASK_OPTS='--appdir=/Applications'
