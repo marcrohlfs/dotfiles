@@ -3,5 +3,9 @@
 # SSH
 /ssh/known_hosts
 
+# IDE
+/.idea/
+*.iml
+
 # Custom
 /tmp/

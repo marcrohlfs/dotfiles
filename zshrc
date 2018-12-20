@@ -59,6 +59,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  colorize
   command-not-found
   common-aliases
   docker
@@ -66,6 +67,7 @@ plugins=(
   extract
   git
   osx
+  systemadmin
   vagrant
   yarn
 )
@@ -214,6 +216,7 @@ alias la='ls -laFh'
 alias latr='ls -laFhtr'
 alias ll='ls -lFh'
 alias lltr='ls -lFhtr'
+unalias rm
 alias vst='vagrant status'
 alias v='vagrant'
 alias vdy='vagrant destroy'
