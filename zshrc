@@ -62,6 +62,7 @@ plugins=(
   colorize
   command-not-found
   common-aliases
+  dotenv
   extract
   git
   osx
@@ -99,6 +100,11 @@ zstyle ':completion:*' special-dirs true
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Always source dotenv file from home folder, even if Terminal is started elsewhere.
+if [[ -f ${HOME}/.env && "${PWD}" != "${HOME}" ]]; then
+  source ${HOME}/.env
+fi
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
