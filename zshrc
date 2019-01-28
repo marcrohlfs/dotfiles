@@ -106,6 +106,28 @@ if [[ -f ${HOME}/.env && "${PWD}" != "${HOME}" ]]; then
   source ${HOME}/.env
 fi
 
+# Use a template to create/update the .gitconfig file. This allows setting
+# variables with values that should no be under version control.
+if [[ -f ${HOME}/.gitconfig && $( stat -f "%Sm" -t "%Y%m%d%H%M%S" ${HOME}/.gitconfig ) > $( stat -f "%Sm" -t "%Y%m%d%H%M%S" ${HOME}/.gitconfig.tmpl ) ]]; then
+  cat ${HOME}/.gitconfig > ${HOME}/.gitconfig.tmpl
+  touch -hm ${HOME}/.gitconfig ${HOME}/.gitconfig.tmpl
+  echo "Copied ${HOME}/.gitconfig to ${HOME}/.gitconfig.tmpl because it has recent changes."
+else
+  GIT_SUBSTVARS_SET=true
+  for ENV_VAR in $( envsubst --variables "$( cat ${HOME}/.gitconfig.tmpl )" ); do
+    if [ -z "$( env | grep ${ENV_VAR} )" ]; then
+      >&2 echo "Variable $ENV_VAR must be set!"
+      GIT_SUBSTVARS_SET=false
+    fi
+  done
+  if [[ "${GIT_SUBSTVARS_SET}" == "false" ]]; then
+    >&2 echo "Not updating ${HOME}/.gitconfig because required variables are not set!"
+  else
+    envsubst < ${HOME}/.gitconfig.tmpl > ${HOME}/.gitconfig
+    touch -hm ${HOME}/.gitconfig ${HOME}/.gitconfig.tmpl
+  fi
+fi
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
