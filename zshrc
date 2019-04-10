@@ -62,7 +62,6 @@ plugins=(
   colorize
   command-not-found
   common-aliases
-  dotenv
   extract
   git
   git-prompt
@@ -235,3 +234,6 @@ else
   echo "  curl -s \"https://get.sdkman.io\" | bash"
   echo
 fi
+
+# Hook direnv into the shell
+eval "$(direnv hook zsh)"
