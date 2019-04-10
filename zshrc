@@ -65,8 +65,11 @@ plugins=(
   dotenv
   extract
   git
+  git-prompt
   osx
+  per-directory-history
   systemadmin
+  timer
 )
 
 source $ZSH/oh-my-zsh.sh
