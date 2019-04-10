@@ -101,13 +101,9 @@ zstyle ':completion:*' special-dirs true
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Always source dotenv file from home folder, even if Terminal is started elsewhere.
-if [[ -f ${HOME}/.env && "${PWD}" != "${HOME}" ]]; then
-  source ${HOME}/.env
-fi
-
 # Use a template to create/update the .gitconfig file. This allows setting
 # variables with values that should no be under version control.
+[[ -f ${HOME}/.gitconfig.env ]] && source ${HOME}/.gitconfig.env
 if [[ -f ${HOME}/.gitconfig && $( stat -f "%Sm" -t "%Y%m%d%H%M%S" ${HOME}/.gitconfig ) > $( stat -f "%Sm" -t "%Y%m%d%H%M%S" ${HOME}/.gitconfig.tmpl ) ]]; then
   cat ${HOME}/.gitconfig > ${HOME}/.gitconfig.tmpl
   touch -hm ${HOME}/.gitconfig ${HOME}/.gitconfig.tmpl
@@ -116,7 +112,7 @@ else
   GIT_SUBSTVARS_SET=true
   for ENV_VAR in $( envsubst --variables "$( cat ${HOME}/.gitconfig.tmpl )" ); do
     if [ -z "$( env | grep ${ENV_VAR} )" ]; then
-      >&2 echo "Variable $ENV_VAR must be set!"
+      >&2 echo "Variable $ENV_VAR must be set! It's probably missing in ${HOME}/.gitconfig.env"
       GIT_SUBSTVARS_SET=false
     fi
   done
