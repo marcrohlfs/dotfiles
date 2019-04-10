@@ -98,9 +98,6 @@ zstyle ':completion:*' special-dirs true
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Always source dotenv file from home folder, even if Terminal is started elsewhere.
 if [[ -f ${HOME}/.env && "${PWD}" != "${HOME}" ]]; then
   source ${HOME}/.env
