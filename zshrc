@@ -66,8 +66,11 @@ plugins=(
   docker-compose
   extract
   git
+  git-prompt
   osx
+  per-directory-history
   systemadmin
+  timer
   vagrant
   yarn
 )
@@ -89,7 +92,7 @@ zstyle ':completion:*' special-dirs true
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -101,8 +104,28 @@ zstyle ':completion:*' special-dirs true
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+# Use a template to create/update the .gitconfig file. This allows setting
+# variables with values that should no be under version control.
+[[ -f ${HOME}/.gitconfig.env ]] && source ${HOME}/.gitconfig.env
+if [[ -f ${HOME}/.gitconfig && $( stat -f "%Sm" -t "%Y%m%d%H%M%S" ${HOME}/.gitconfig ) > $( stat -f "%Sm" -t "%Y%m%d%H%M%S" ${HOME}/.gitconfig.tmpl ) ]]; then
+  cat ${HOME}/.gitconfig > ${HOME}/.gitconfig.tmpl
+  touch -hm ${HOME}/.gitconfig ${HOME}/.gitconfig.tmpl
+  echo "Copied ${HOME}/.gitconfig to ${HOME}/.gitconfig.tmpl because it has recent changes."
+else
+  GIT_SUBSTVARS_SET=true
+  for ENV_VAR in $( envsubst --variables "$( cat ${HOME}/.gitconfig.tmpl )" ); do
+    if [ -z "$( env | grep ${ENV_VAR} )" ]; then
+      >&2 echo "Variable $ENV_VAR must be set! It's probably missing in ${HOME}/.gitconfig.env"
+      GIT_SUBSTVARS_SET=false
+    fi
+  done
+  if [[ "${GIT_SUBSTVARS_SET}" == "false" ]]; then
+    >&2 echo "Not updating ${HOME}/.gitconfig because required variables are not set!"
+  else
+    envsubst < ${HOME}/.gitconfig.tmpl > ${HOME}/.gitconfig
+    touch -hm ${HOME}/.gitconfig ${HOME}/.gitconfig.tmpl
+  fi
+fi
 
 # Add custom scripts to the path
 export PATH=${HOME}/bin/public:${PATH}
@@ -134,6 +157,7 @@ alias gbr='git branch'
 alias gbrd='git branch --delete'
 alias gbrD='git branch --delete --force'
 alias gbrm='git branch --move'
+alias gbrr='git branch --remotes'
 alias gbrvv='git branch -vv'
 alias gbrvva='git branch -vva'
 alias gcf='git config'
@@ -151,6 +175,7 @@ alias gcpc='git cherry-pick --continue'
 alias gcpnc='git cherry-pick --no-commit'
 alias gdf='git diff'
 alias gdfc='git diff --cached'
+alias gdfns='git diff --name-status'
 alias gft='git fetch'
 alias gftap='git fetch --all --prune --no-tags'
 alias gftapt='git fetch --all --prune --tags'
@@ -165,6 +190,7 @@ alias glg='git log'
 alias glgns='git log --name-status'
 alias glgs='git log --stat'
 alias glr='git ls-remote'
+alias gmb='git merge-base'
 alias gmg='git merge'
 alias gmga='git merge --abort'
 alias gmgc='git merge --continue'
@@ -195,6 +221,7 @@ alias grtv='git remote --verbose'
 alias grv='git revert'
 alias grva='git revert --abort'
 alias grvc='git revert --continue'
+alias grvnc='git revert --no-commit'
 alias gsh='git stash'
 alias gshl='git stash list'
 alias gshp='git stash pop'
@@ -252,3 +279,6 @@ fi
 
 # Source the RC file that sets the custom environment for each project.
 source ${HOME}/bin/public/assets/projects/rcfile
+
+# Hook direnv into the shell
+eval "$(direnv hook zsh)"

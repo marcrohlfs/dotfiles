@@ -3,8 +3,8 @@
 - link:
     ~/bin:
         path: bin/
-    ~/.gitconfig:
-        path: gitconfig
+    ~/.gitconfig.tmpl:
+        path: gitconfig.tmpl
     ~/.oh-my-zsh:
         path: oh-my-zsh/
     ~/.ssh:
