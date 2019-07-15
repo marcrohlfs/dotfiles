@@ -59,6 +59,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  autojump
   colorize
   command-not-found
   common-aliases
@@ -163,6 +164,8 @@ alias gbrd='git branch --delete'
 alias gbrD='git branch --delete --force'
 alias gbrm='git branch --move'
 alias gbrr='git branch --remotes'
+alias gbrsu='git branch --set-upstream-to'
+alias gbruu='git branch --unset-upstream'
 alias gbrvv='git branch -vv'
 alias gbrvva='git branch -vva'
 alias gcf='git config'
@@ -217,6 +220,8 @@ alias grm='git rm'
 alias grs='git reset'
 alias grsh='git reset --hard'
 alias grsh1='git reset --hard HEAD~1'
+alias grsm1='git reset --mixed HEAD~1'
+alias grss1='git reset --soft HEAD~1'
 alias grsH='git reset HEAD'
 alias grt='git remote'
 alias grtad='git remote add'
@@ -238,6 +243,7 @@ alias gsmupirr='git submodule update --init --recursive --remote'
 alias gst='git status'
 alias gsw='git show'
 alias gswH='git show HEAD'
+alias gsws0='git show stash@{0}'
 alias gtg='git tag'
 alias gtgl='git tag --list'
 alias gtgd='git tag --delete'
