@@ -74,6 +74,7 @@ plugins=(
   git-prompt
   osx
   per-directory-history
+  sdk
   systemadmin
   timer
 )
