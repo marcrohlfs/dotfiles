@@ -68,6 +68,7 @@ plugins=(
   extract
   git
   git-prompt
+  jira
   osx
   per-directory-history
   systemadmin
