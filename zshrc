@@ -26,8 +26,14 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -71,6 +77,7 @@ plugins=(
   jira
   osx
   per-directory-history
+  sdk
   systemadmin
   timer
   vagrant
@@ -185,7 +192,7 @@ alias gcpnc='git cherry-pick --no-commit'
 alias gdf='git diff'
 alias gdfc='git diff --cached'
 alias gdfns='git diff --name-status'
-alias gft='git fetch'
+alias gft='git fetch --no-tags'
 alias gftap='git fetch --all --prune --no-tags'
 alias gftapt='git fetch --all --prune --tags'
 alias ggc='git gc'
