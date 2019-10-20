@@ -7,6 +7,8 @@
         path: gitconfig.tmpl
     ~/.oh-my-zsh:
         path: oh-my-zsh/
+    ~/.oh-my-zsh-custom:
+        path: oh-my-zsh-custom/
     ~/.ssh:
         path: ssh/
     ~/.vimrc:
