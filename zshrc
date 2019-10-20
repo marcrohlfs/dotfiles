@@ -58,7 +58,7 @@ DISABLE_MAGIC_FUNCTIONS=true
 HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=${HOME}/.oh-my-zsh-custom
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -234,11 +234,6 @@ alias gtgd='git tag --delete'
 alias gur='git update-ref'
 alias gur-develop='git update-ref refs/heads/development origin/develop'
 alias gur-master='git update-ref refs/heads/master origin/master'
-alias la='ls -laFh'
-alias latr='ls -laFhtr'
-alias ll='ls -lFh'
-alias lltr='ls -lFhtr'
-unalias rm
 
 # Install Homebrew casks to the main /Applications directory (instead of ~/Applications)
 export HOMEBREW_CASK_OPTS='--appdir=/Applications'
