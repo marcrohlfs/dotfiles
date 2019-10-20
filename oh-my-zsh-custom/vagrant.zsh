@@ -1,0 +1,15 @@
+# Vagrant aliases
+
+alias v='vagrant'
+alias vdy='vagrant destroy'
+alias vdY='vagrant destroy --force'
+alias vh='vagrant halt'
+alias vpl='vagrant plugin'
+alias vplin='vagrant plugin install'
+alias vplls='vagrant plugin list'
+alias vplrm='vagrant plugin uninstall'
+alias vplup='vagrant plugin update'
+alias vpr='vagrant provision'
+alias vssh='vagrant ssh'
+alias vst='vagrant status'
+alias vup='vagrant up'

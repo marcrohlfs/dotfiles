@@ -150,20 +150,6 @@ export PATH="${HOME}/bin/Sencha/Cmd:$PATH"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vst='vagrant status'
-alias v='vagrant'
-alias vdy='vagrant destroy'
-alias vdY='vagrant destroy --force'
-alias vh='vagrant halt'
-alias vpl='vagrant plugin'
-alias vplin='vagrant plugin install'
-alias vplls='vagrant plugin list'
-alias vplrm='vagrant plugin uninstall'
-alias vplup='vagrant plugin update'
-alias vpr='vagrant provision'
-alias vssh='vagrant ssh'
-alias vst='vagrant status'
-alias vup='vagrant up'
 
 # Install Homebrew casks to the main /Applications directory (instead of ~/Applications)
 export HOMEBREW_CASK_OPTS='--appdir=/Applications'
