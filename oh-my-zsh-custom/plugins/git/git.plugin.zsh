@@ -104,5 +104,10 @@ alias gtg='git tag'
 alias gtgl='git tag --list'
 alias gtgd='git tag --delete'
 alias gur='git update-ref'
-alias gur-develop='git update-ref refs/heads/develop origin/develop'
-alias gur-master='git update-ref refs/heads/master origin/master'
+
+function guru() {
+  [[ "$#" == 0 ]] \
+    && local b='master' \
+    || local b="$( git config branch.$1.merge | sed 's:.*/heads/::g' )"
+  [[ -n "${b}" ]] && git update-ref "refs/heads/${b}" "$( git config branch.${b}.remote )/${b}"
+}
