@@ -60,6 +60,9 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=${HOME}/.oh-my-zsh-custom
 
+# Source env settings that are not under version control
+[[ -f ${HOME}/.zsh.env ]] && source ${HOME}/.zsh.env
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -107,29 +110,6 @@ export LANG=en_US.UTF-8
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# Use a template to create/update the .gitconfig file. This allows setting
-# variables with values that should no be under version control.
-[[ -f ${HOME}/.gitconfig.env ]] && source ${HOME}/.gitconfig.env
-if [[ -f ${HOME}/.gitconfig && $( stat -f "%Sm" -t "%Y%m%d%H%M%S" ${HOME}/.gitconfig ) > $( stat -f "%Sm" -t "%Y%m%d%H%M%S" ${HOME}/.gitconfig.tmpl ) ]]; then
-  cat ${HOME}/.gitconfig > ${HOME}/.gitconfig.tmpl
-  touch -hm ${HOME}/.gitconfig ${HOME}/.gitconfig.tmpl
-  echo "Copied ${HOME}/.gitconfig to ${HOME}/.gitconfig.tmpl because it has recent changes."
-else
-  GIT_SUBSTVARS_SET=true
-  for ENV_VAR in $( envsubst --variables "$( cat ${HOME}/.gitconfig.tmpl )" ); do
-    if [ -z "$( env | grep ${ENV_VAR} )" ]; then
-      >&2 echo "Variable $ENV_VAR must be set! It's probably missing in ${HOME}/.gitconfig.env"
-      GIT_SUBSTVARS_SET=false
-    fi
-  done
-  if [[ "${GIT_SUBSTVARS_SET}" == "false" ]]; then
-    >&2 echo "Not updating ${HOME}/.gitconfig because required variables are not set!"
-  else
-    envsubst < ${HOME}/.gitconfig.tmpl > ${HOME}/.gitconfig
-    touch -hm ${HOME}/.gitconfig ${HOME}/.gitconfig.tmpl
-  fi
-fi
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
