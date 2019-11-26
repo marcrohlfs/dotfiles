@@ -4,23 +4,23 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -54,13 +54,20 @@ DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
 HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=${HOME}/.oh-my-zsh-custom
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Source env settings that are not under version control
+[[ -f ${HOME}/.zsh.env ]] && source ${HOME}/.zsh.env
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
@@ -112,35 +119,6 @@ export LANG=en_US.UTF-8
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# Use a template to create/update the .gitconfig file. This allows setting
-# variables with values that should no be under version control.
-[[ -f ${HOME}/.gitconfig.env ]] && source ${HOME}/.gitconfig.env
-if [[ -f ${HOME}/.gitconfig && $( stat -f "%Sm" -t "%Y%m%d%H%M%S" ${HOME}/.gitconfig ) > $( stat -f "%Sm" -t "%Y%m%d%H%M%S" ${HOME}/.gitconfig.tmpl ) ]]; then
-  cat ${HOME}/.gitconfig > ${HOME}/.gitconfig.tmpl
-  touch -hm ${HOME}/.gitconfig ${HOME}/.gitconfig.tmpl
-  echo "Copied ${HOME}/.gitconfig to ${HOME}/.gitconfig.tmpl because it has recent changes."
-else
-  GIT_SUBSTVARS_SET=true
-  for ENV_VAR in $( envsubst --variables "$( cat ${HOME}/.gitconfig.tmpl )" ); do
-    if [ -z "$( env | grep ${ENV_VAR} )" ]; then
-      >&2 echo "Variable $ENV_VAR must be set! It's probably missing in ${HOME}/.gitconfig.env"
-      GIT_SUBSTVARS_SET=false
-    fi
-  done
-  if [[ "${GIT_SUBSTVARS_SET}" == "false" ]]; then
-    >&2 echo "Not updating ${HOME}/.gitconfig because required variables are not set!"
-  else
-    envsubst < ${HOME}/.gitconfig.tmpl > ${HOME}/.gitconfig
-    touch -hm ${HOME}/.gitconfig ${HOME}/.gitconfig.tmpl
-  fi
-fi
-
-# Add custom scripts to the path
-export PATH=${HOME}/bin/public:${PATH}
-
-# Add local SenchaCmd to the path
-export PATH="${HOME}/bin/Sencha/Cmd:$PATH"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh

@@ -3,8 +3,6 @@
 - link:
     ~/bin:
         path: bin/
-    ~/.gitconfig.tmpl:
-        path: gitconfig.tmpl
     ~/.oh-my-zsh:
         path: oh-my-zsh/
     ~/.oh-my-zsh-custom:
