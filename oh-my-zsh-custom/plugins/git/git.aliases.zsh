@@ -191,10 +191,11 @@ alias grvnc='git revert --no-commit'
 alias grvs='git revert --skip'
 
 alias gsh='git stash'
+alias gshd='git stash drop'
 alias gshl='git stash list'
 alias gshp='git stash pop'
-alias gshd='git stash drop'
 alias gshs='git stash show --text'
+alias gshu='git stash --include-untracked'
 
 alias gsm='git submodule'
 alias gsmup='git submodule update'
