@@ -74,7 +74,6 @@ ZSH_CUSTOM=${HOME}/.oh-my-zsh-custom
 plugins=(
   autojump
   colorize
-  command-not-found
   common-aliases
   extract
   git
