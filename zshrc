@@ -85,6 +85,9 @@ plugins=(
   timer
 )
 
+# Plugins to load only when their key variables are set
+[[ -n ${JIRA_URL} ]] && plugins+=(jira)
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
