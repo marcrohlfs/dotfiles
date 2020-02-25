@@ -12,7 +12,7 @@ local array git_commands=(
   dc:describe df:diff ft:fetch fp:format-patch gc:gc gr:grep in:init
   lg:log lgs:shortlog lf:ls-files lr:ls-remote mg:merge mb:merge-base
   mv:mv pr:prune prp:prune-packed pl:pull ps:push rb:rebase rl:reflog
-  rt:remote re:rerere rs:reset rst:restore rv:revert rm:rm sw:show
+  rm:rm rr:rerere rs:reset rst:restore rt:remote rv:revert sw:show
   sh:stash st:status sm:submodule tg:tag ur:update-ref wc:whatchanged
 )
 for cmd in $git_commands; do
@@ -164,6 +164,14 @@ alias grl='git reflog'
 alias grm='git rm'
 alias grmc='git rm --cached'
 
+alias grr='git rerere'
+alias grrcl='git rerere clear'
+alias grrdf='git rerere diff'
+alias grrfg='git rerere forget'
+alias grrgc='git rerere gc'
+alias grrrg='git rerere remaining'
+alias grrst='git rerere status'
+
 alias grs='git reset'
 alias grsH='git reset HEAD'
 alias grsh='git reset --hard'
@@ -191,10 +199,11 @@ alias grvnc='git revert --no-commit'
 alias grvs='git revert --skip'
 
 alias gsh='git stash'
+alias gshd='git stash drop'
 alias gshl='git stash list'
 alias gshp='git stash pop'
-alias gshd='git stash drop'
 alias gshs='git stash show --text'
+alias gshu='git stash --include-untracked'
 
 alias gsm='git submodule'
 alias gsmup='git submodule update'
