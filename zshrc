@@ -78,6 +78,7 @@ plugins=(
   extract
   git
   git-prompt
+  jsontools
   osx
   per-directory-history
   sdk
