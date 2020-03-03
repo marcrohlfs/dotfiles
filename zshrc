@@ -122,6 +122,9 @@ export LANG=en_US.UTF-8
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# Add custom scripts to the path
+export PATH=${HOME}/bin/Sencha/Cmd:${HOME}/bin/public:${HOME}/bin:${PATH}
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -136,7 +139,7 @@ export HOMEBREW_CASK_OPTS='--appdir=/Applications'
 
 # Development environment
 export _JAVA_OPTIONS='-Djava.net.preferIPv4Stack=true -Djava.awt.headless=true'
-export MAVEN_OPTS='-ms256m -mx2048m -Dfile.encoding=UTF-8 -Djava.awt.headless=true'
+export MAVEN_OPTS='-Xms256m -Xmx2048m -Dfile.encoding=UTF-8 -Djava.awt.headless=true'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -154,3 +157,7 @@ source ${HOME}/bin/public/assets/projects/rcfile
 
 # Hook direnv into the shell
 eval "$(direnv hook zsh)"
+
+#AWSume alias to source the AWSume script
+#alias awsume=". awsume"
+#fpath=(/usr/local/share/zsh/site-functions $fpath)

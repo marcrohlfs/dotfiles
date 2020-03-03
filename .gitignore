@@ -8,5 +8,8 @@
 /.idea/
 *.iml
 
+# Scripts
+/bin/*
+
 # Custom
 /tmp/
