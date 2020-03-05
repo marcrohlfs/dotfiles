@@ -2,6 +2,10 @@
 # Custom Git configurations, functions and aliases
 #
 
+if [[ -z "${GIT_PROTECTED_BRANCH_PATTERNS}" ]]; then
+  export GIT_PROTECTED_BRANCH_PATTERNS='master|develop'
+fi
+
 local git_plugin_dir=${0:h}
 source ${git_plugin_dir}/git.functions.zsh
 source ${git_plugin_dir}/git.aliases.zsh

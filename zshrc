@@ -80,7 +80,7 @@ plugins=(
   extract
   git
   git-prompt
-  jira
+  jsontools
   osx
   per-directory-history
   sdk
@@ -89,6 +89,9 @@ plugins=(
   vagrant
   yarn
 )
+
+# Plugins to load only when their key variables are set
+[[ -n ${JIRA_URL} ]] && plugins+=(jira)
 
 source $ZSH/oh-my-zsh.sh
 
