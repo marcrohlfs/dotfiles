@@ -1,3 +1,6 @@
+[submodule "bin/public"]
+	path = bin/public
+	url = https://github.com/marcrohlfs/scripts.git
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
@@ -7,3 +10,7 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
+[submodule "oh-my-zsh-custom/themes/powerlevel10k"]
+	path = oh-my-zsh-custom/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
+	branch = v1.13.0

@@ -13,6 +13,8 @@
         path: oh-my-zsh/
     ~/.oh-my-zsh-custom:
         path: oh-my-zsh-custom/
+    ~/.p10k.zsh:
+        path: p10k.zsh
     ~/.ssh:
         path: ssh/
     ~/.vimrc:
