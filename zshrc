@@ -64,7 +64,11 @@ HIST_STAMPS="yyyy-mm-dd"
 ZSH_CUSTOM=${HOME}/.oh-my-zsh-custom
 
 # Source env settings that are not under version control
-[[ -f ${HOME}/.zsh.env ]] && source ${HOME}/.zsh.env
+if [[ -f ${HOME}/.zsh.env ]]; then
+  source ${HOME}/.zsh.env
+else
+  echo "Add '${HOME}/.zsh.env' to provide local settings."
+fi
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
