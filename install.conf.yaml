@@ -1,5 +1,13 @@
 - clean: ['~']
 
+- brew:
+    - autojump
+    - direnv
+    - gh
+    - git
+    - git-gui
+    - tree
+
 - link:
     ~/.oh-my-zsh:
         path: oh-my-zsh/
