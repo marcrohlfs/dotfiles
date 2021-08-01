@@ -33,14 +33,18 @@ alias gadp='git add --patch'
 alias gadu='git add --update'
 alias gadv='git add --verbose'
 
+alias gama='git am --abort'
+alias gamc='git am --continue'
+alias gams='git am --skip'
+
 alias gbl='git blame -b -w'
 
 alias gbra='git branch --all'
 alias gbrd='git branch --delete'
 alias gbrd!='git branch --delete --force'
 alias gbrm='git branch --move'
-alias gbrmg='git branch --merged'
-alias gbrmgd='git branch --merged --no-color | command grep -vE "^(\+|\*|\s*(${GIT_PROTECTED_BRANCHES})\s*$)" | command xargs -n 1 git branch --delete'
+alias gbrmg='git branch --merged | command grep -vE "^(\+|\*|\s*(${GIT_PROTECTED_BRANCH_PATTERNS})\s*$)"'
+alias gbrmgd='git branch --no-color --merged | command grep -vE "^(\+|\*|\s*(${GIT_PROTECTED_BRANCH_PATTERNS})\s*$)" | command xargs -n 1 git branch --delete'
 alias gbrnmg='git branch --no-merged'
 alias gbrr='git branch --remotes'
 alias gbrrv='git branch --remotes --verbose'
@@ -83,7 +87,7 @@ alias gcnfd='git clean --force -d'
 alias gcni='git clean --interactive'
 alias gcnid='git clean --interactive -d'
 
-alias gcob='git checkout -b'
+alias gcob='git checkout --no-track -b'
 
 alias gcpa='git cherry-pick --abort'
 alias gcpc='git cherry-pick --continue'
@@ -96,7 +100,11 @@ alias gdfuc='git diff origin/$(git_current_branch)'
 alias gdfluc='git diff $(git_current_branch) origin/$(git_current_branch)'
 
 alias gfta='git fetch --all --no-tags'
+alias gftant='git fetch --all --no-tags'
 alias gftat='git fetch --all --tags'
+
+alias gfp='git format-patch --keep-subject'
+alias gfpo='git format-patch --keep-subject --output-directory'
 
 alias ggcp='git gc --prune'
 
@@ -117,6 +125,8 @@ alias glgo='git log --oneline'
 alias glgp="_git_log_prettily"
 alias glgs='git log --stat'
 
+alias gmba='git merge-base --all'
+
 alias gmga='git merge --abort'
 alias gmgc='git merge --continue'
 alias gmgffo='git merge --ff-only'
@@ -129,13 +139,13 @@ alias gpltsh='git pull --tags --autostash'
 
 alias gpristine='git reset --hard && git clean -dx --force'
 
+alias gps='git push --set-upstream'
 alias gps!='git push --force-with-lease'
 alias gps!!='git push --force'
 alias gpsd!='git push --dry-run --force-with-lease'
 alias gpsd!!='git push --dry-run --force'
 alias gpst='git push --tags'
 alias gpstd='git push --tags  --dry-run'
-alias gpsu='git push --set-upstream'
 alias gpsup='git push --set-upstream origin $(git_current_branch)'
 
 alias grba='git rebase --abort'
@@ -162,6 +172,9 @@ alias grsmuc='git reset --mixed origin/$(git_current_branch'
 alias grss='git reset --soft'
 alias grss1='git reset --soft HEAD~1'
 alias grssuc='git reset --soft origin/$(git_current_branch'
+
+alias grsts='git restore --staged'
+alias grstw='git restore --worktree'
 
 alias grtad='git remote add'
 alias grtrm='git remote remove'
