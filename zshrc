@@ -81,6 +81,7 @@ plugins=(
   autojump
   colorize
   common-aliases
+  direnv
   extract
   git
   git-prompt
@@ -146,6 +147,3 @@ else
   echo "  curl -s \"https://get.sdkman.io\" | zsh"
   echo
 fi
-
-# Hook direnv into the shell
-eval "$(direnv hook zsh)"
