@@ -103,6 +103,7 @@ plugins=(
 
 # Plugins to load only when their key variables are set
 [[ -n ${JIRA_URL} ]] && plugins+=(jira)
+[[ ${GIT_USER_EMAIL} == *"coremedia.com" ]] && plugins+=(coremedia)
 
 source $ZSH/oh-my-zsh.sh
 

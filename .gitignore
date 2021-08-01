@@ -8,5 +8,12 @@
 /.idea/
 *.iml
 
+# Mac
+.DS_Store
+
+# Oh-My-Zsh
+/oh-my-zsh-custom/plugins/*
+!/oh-my-zsh-custom/plugins/git/
+
 # Custom
 /tmp/
