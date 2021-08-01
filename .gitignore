@@ -17,5 +17,11 @@
 !/oh-my-zsh-custom/plugins/external-tools/
 /oh-my-zsh-custom/plugins/external-tools/bin/
 
+# Scripts
+/bin/chromedriver
+/bin/ci-trigger
+/bin/pr-integrate
+/bin/Sencha/
+
 # Custom
 /tmp/
