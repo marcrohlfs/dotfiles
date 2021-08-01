@@ -92,6 +92,7 @@ plugins=(
   extract
   git
   git-prompt
+  iterm2
   jsontools
   osx
   per-directory-history
