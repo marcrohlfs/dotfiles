@@ -169,3 +169,6 @@ else
   echo "  curl -s \"https://get.sdkman.io\" | zsh"
   echo
 fi
+
+# AWSume alias to source the AWSume script
+alias awsume="source /usr/local/bin/awsume"
