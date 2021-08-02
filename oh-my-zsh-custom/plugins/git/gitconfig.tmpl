@@ -1,6 +1,7 @@
 [user]
 	name = ${GIT_USER_NAME}
 	email = ${GIT_USER_EMAIL}
+	signingkey = ${GIT_USER_SIGNINGKEY}
 [push]
 	default = current
 [alias]
@@ -34,3 +35,5 @@
 [fetch]
 	prune = true
 	pruneTags = false
+[commit]
+	gpgSign = true
