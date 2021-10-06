@@ -2,6 +2,14 @@
 # Maintain custom Git configuration
 #
 
+# Only switch on commit signing when a signing key is set
+if [[ -n "${GIT_USER_SIGNINGKEY}" ]]; then
+  export GIT_COMMIT_GPGSIGN=true
+else
+  export GIT_COMMIT_GPGSIGN=false
+  export GIT_USER_SIGNINGKEY=''
+fi
+
 # Use a template to create/update the .gitconfig file. This allows setting
 # variables with values that should no be under version control.
 if [[ -f ${HOME}/.gitconfig && $( stat -f "%Sm" -t "%Y%m%d%H%M%S" ${HOME}/.gitconfig ) > $( stat -f "%Sm" -t "%Y%m%d%H%M%S" ${git_plugin_dir}/gitconfig.tmpl ) ]]; then
