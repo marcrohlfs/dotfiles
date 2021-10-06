@@ -1,0 +1,18 @@
+"*":
+  core:
+    telemetryConsent: "limited"
+    themes: [
+      "one-light-ui"
+      "atom-light-syntax"
+    ]
+  editor:
+    atomicSoftTabs: false
+    fontSize: 11
+    invisibles: {}
+    preferredLineLength: 120
+  "exception-reporting":
+    userId: "039d9967-1540-cbb4-c530-12aab74c8fca"
+  "tree-view":
+    hideVcsIgnoredFiles: false
+  welcome:
+    showOnStartup: false
