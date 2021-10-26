@@ -102,10 +102,8 @@ plugins=(
   systemadmin
   timer
 )
-
-# Plugins to load only when their key variables are set
 [[ -n ${JIRA_URL} ]] && plugins+=(jira)
-[[ ${GIT_USER_EMAIL} == *"coremedia.com" ]] && plugins+=(coremedia)
+[[ -n ${ZSH_ADDITIONAL_PLUGINS[*]} ]] && plugins+=(${ZSH_ADDITIONAL_PLUGINS})
 
 source $ZSH/oh-my-zsh.sh
 
