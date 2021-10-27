@@ -91,6 +91,7 @@ plugins=(
   direnv
   docker
   docker-compose
+  external-tools
   extract
   git
   git-prompt
