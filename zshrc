@@ -89,8 +89,6 @@ plugins=(
   colorize
   common-aliases
   direnv
-  docker
-  docker-compose
   external-tools
   extract
   git
@@ -103,6 +101,8 @@ plugins=(
   systemadmin
   timer
 )
+[[ -n $( command -v docker ) ]] && plugins+=(docker)
+[[ -n $( command -v docker-compose ) ]] && plugins+=(docker-compose)
 [[ -n ${JIRA_URL} ]] && plugins+=(jira)
 [[ -n ${ZSH_ADDITIONAL_PLUGINS[*]} ]] && plugins+=(${ZSH_ADDITIONAL_PLUGINS})
 
