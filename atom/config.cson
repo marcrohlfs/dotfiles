@@ -1,17 +1,20 @@
 "*":
+  "auto-dark-mode": {}
   core:
+    packagesWithKeymapsDisabled: []
     telemetryConsent: "limited"
-    themes: [
-      "one-light-ui"
-      "atom-light-syntax"
-    ]
   editor:
     atomicSoftTabs: false
+    defaultFontSize: 12
     fontSize: 11
     invisibles: {}
     preferredLineLength: 120
   "exception-reporting":
     userId: "039d9967-1540-cbb4-c530-12aab74c8fca"
+  "git-plus":
+    general: {}
+  "intellij-idea-keymap": {}
+  "split-diff": {}
   "tree-view":
     hideVcsIgnoredFiles: false
   welcome:
