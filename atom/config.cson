@@ -2,7 +2,11 @@
   "auto-dark-mode": {}
   core:
     packagesWithKeymapsDisabled: []
-    telemetryConsent: "limited"
+    telemetryConsent: "no"
+    themes: [
+      "one-light-ui"
+      "one-light-syntax"
+    ]
   editor:
     atomicSoftTabs: false
     defaultFontSize: 12
@@ -13,6 +17,8 @@
     userId: "039d9967-1540-cbb4-c530-12aab74c8fca"
   "git-plus":
     general: {}
+  github:
+    automaticCommitMessageWrapping: false
   "intellij-idea-keymap": {}
   "split-diff": {}
   "tree-view":
