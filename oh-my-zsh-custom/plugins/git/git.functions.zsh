@@ -38,17 +38,19 @@ function gcorbomb() {
     echo "Usage: ${0} [checkout_branch] rebase_onto_branch"
     return 1
   fi
-  git rebase --onto ${rbo} $(git merge-base ${co} ${rbo}) ${co}
+  git rebase --onto ${rbo} "$(git merge-base ${co} ${rbo})" ${co}
 }
 compdef _git gcorbomb=git-rebase
 
 # Open diff in vim
-function gdfv() { git diff -w "$@" | view - }
+function gdfv() {
+  git diff -w "$@" | view -
+}
 compdef _git gdfv=git-diff
 
 # Interactively rebase the last n (up to 999) commits or whatever standard args apply
 function grbi() {
-  if [[ "${1}" =~ '^[0-9]{1,3}$' ]]; then
+  if [[ "${1}" =~ ^[0-9]{1,3}$ ]]; then
     local args="HEAD~${*}"
   else
     local args="${*}"
@@ -59,16 +61,17 @@ compdef _git grbi=git-rebase
 
 # Update non-HEAD branch to its upstream (default: master)
 function guru() {
+  local branch
   [[ "$#" == 0 ]] \
-    && local b='master' \
-    || local b="$( git config branch.$1.merge | sed 's:.*/heads/::g' )"
-  [[ -n "${b}" ]] && git update-ref "refs/heads/${b}" "$( git config branch.${b}.remote )/${b}"
+    && branch='master' \
+    || branch="$( git config "branch.$1.merge" | sed 's:.*/heads/::g' )"
+  [[ -n ${branch} ]] && git update-ref refs/heads/${branch} "$( git config branch.${branch}.remote )/${branch}"
 }
 compdef _git guru=git-update-ref
 
 # Warn if the current branch is a WIP
 function work_in_progress() {
-  if $(git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"); then
+  if git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"; then
     echo "WIP!!"
   fi
 }
