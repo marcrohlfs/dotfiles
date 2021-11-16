@@ -3,7 +3,7 @@
 #
 
 if [[ -z "${GIT_PROTECTED_BRANCH_PATTERNS}" ]]; then
-  export GIT_PROTECTED_BRANCH_PATTERNS='master|develop'
+  export GIT_PROTECTED_BRANCH_PATTERNS='main|master|develop'
 fi
 
 local git_plugin_dir=${0:h}
