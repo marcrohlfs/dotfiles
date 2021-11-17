@@ -14,4 +14,4 @@ unset git_plugin_dir
 
 # Disable completions from (Homebrew) Git installations
 find /usr/local/share/zsh/site-functions -path '*git*' -depth 1 \
-    -exec echo mv -fv {} /usr/local/share/zsh/site-functions/disabled/ \;
+    -exec mv -fv {} /usr/local/share/zsh/site-functions/disabled/ \;
