@@ -95,7 +95,7 @@ plugins=(
   git-prompt
   iterm2
   jsontools
-  osx
+  macos
   per-directory-history
   sdk
   systemadmin
