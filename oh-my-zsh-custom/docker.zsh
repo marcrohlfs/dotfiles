@@ -20,7 +20,7 @@ fi
 if [[ " ${plugins[*]} " == *" docker-compose "* ]]; then
   chalias dcb dcbd
   chalias dce dcex
-  alias dcdnv='docker-compose down --volumes'
+  alias dcdnv="$(alias dco | sed -E "s/.+'(.+)'/\1/") down --volumes"
   chalias dck dckl
   chalias dcl dclg
   chalias dclf dclgf
