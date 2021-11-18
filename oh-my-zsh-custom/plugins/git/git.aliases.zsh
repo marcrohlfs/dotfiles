@@ -139,7 +139,7 @@ alias gpltsh='git pull --tags --autostash'
 
 alias gpristine='git reset --hard && git clean -dx --force'
 
-alias gps='git push --set-upstream'
+alias gps='git push'
 alias gps!='git push --force-with-lease'
 alias gps!!='git push --force'
 alias gpsd!='git push --dry-run --force-with-lease'
