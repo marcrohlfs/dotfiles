@@ -29,13 +29,13 @@ compdef _git gbrmrt=git-branch
 # Checkout branch and rebase it onto another branch
 function gcorbomb() {
   if [[ $# == 1 ]]; then
-    local co='HEAD'
     local rbo="$1"
+    local co='HEAD'
   elif [[ $# == 2 ]]; then
-    local co="$1"
-    local rbo="$2"
+    local rbo="$1"
+    local co="$2"
   else
-    echo "Usage: ${0} [checkout_branch] rebase_onto_branch"
+    echo "Usage: ${0} rebase_onto_branch [checkout_branch]"
     return 1
   fi
   git rebase --onto ${rbo} "$(git merge-base ${co} ${rbo})" ${co}
