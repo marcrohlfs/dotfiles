@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Add Rancher Desktop binaries to the PATH if available/installed.
+[[ -d ${HOME}/.rd/bin ]] && export PATH="/Users/mrohlfs/.rd/bin:$PATH"
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
