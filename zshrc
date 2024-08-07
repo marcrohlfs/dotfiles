@@ -1,9 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Add Rancher Desktop binaries to the PATH if available/installed.
-[[ -d ${HOME}/.rd/bin ]] && export PATH="/Users/mrohlfs/.rd/bin:$PATH"
-
 # Path to your Oh My Zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -74,6 +71,9 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=${HOME}/.oh-my-zsh-custom
+
+# Add Rancher Desktop binaries to the PATH if available/installed.
+[[ -d ${HOME}/.rd/bin ]] && export PATH="${HOME}/.rd/bin:${PATH}"
 
 # Source env settings that are not under version control
 if [[ -f ${HOME}/.zsh.env ]]; then
