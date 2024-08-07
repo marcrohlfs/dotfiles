@@ -23,3 +23,5 @@
         path: vimrc
     ~/.zshrc:
         path: zshrc
+    ~/bin:
+        path: bin/

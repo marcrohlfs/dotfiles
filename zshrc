@@ -75,6 +75,9 @@ ZSH_CUSTOM=${HOME}/.oh-my-zsh-custom
 # Add Rancher Desktop binaries to the PATH if available/installed.
 [[ -d ${HOME}/.rd/bin ]] && export PATH="${HOME}/.rd/bin:${PATH}"
 
+# Add custom binaries to the PATH.
+export PATH="${HOME}/bin:${PATH}"
+
 # Source env settings that are not under version control
 if [[ -f ${HOME}/.zsh.env ]]; then
   source ${HOME}/.zsh.env
