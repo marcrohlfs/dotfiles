@@ -1,4 +1,4 @@
-- clean: ['~']
+- clean: [ '~' ]
 
 - brew:
     - autojump
@@ -10,18 +10,18 @@
 
 - link:
     ~/.atom/config.cson:
-        path: atom/config.cson
+      path: atom/config.cson
     ~/.oh-my-zsh:
-        path: oh-my-zsh/
+      path: oh-my-zsh/
     ~/.oh-my-zsh-custom:
-        path: oh-my-zsh-custom/
+      path: oh-my-zsh-custom/
     ~/.p10k.zsh:
-        path: p10k.zsh
+      path: p10k.zsh
     ~/.ssh:
-        path: ssh/
+      path: ssh/
     ~/.vimrc:
-        path: vimrc
+      path: vimrc
     ~/.zshrc:
-        path: zshrc
+      path: zshrc
     ~/bin:
-        path: bin/
+      path: bin/
