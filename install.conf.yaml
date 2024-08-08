@@ -12,16 +12,20 @@
     ~/.atom/config.cson:
       path: atom/config.cson
     ~/.oh-my-zsh:
-      path: oh-my-zsh/
+      path: oh-my-zsh
+      relink: true
     ~/.oh-my-zsh-custom:
-      path: oh-my-zsh-custom/
+      path: oh-my-zsh-custom
+      relink: true
     ~/.p10k.zsh:
       path: p10k.zsh
     ~/.ssh:
-      path: ssh/
+      path: ssh
+      relink: true
     ~/.vimrc:
       path: vimrc
     ~/.zshrc:
       path: zshrc
     ~/bin:
-      path: bin/
+      path: bin
+      relink: true
