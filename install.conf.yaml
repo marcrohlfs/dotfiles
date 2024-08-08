@@ -2,8 +2,10 @@
 
 - brew:
     - autojump
+    - bash
     - coreutils
     - direnv
+    - gettext
     - gh
     - git
     - git-gui
