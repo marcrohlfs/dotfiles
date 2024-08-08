@@ -9,8 +9,6 @@
     - tree
 
 - link:
-    ~/.atom/config.cson:
-      path: atom/config.cson
     ~/.oh-my-zsh:
       path: oh-my-zsh
       relink: true
