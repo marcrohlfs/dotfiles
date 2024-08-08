@@ -14,8 +14,6 @@
 # Oh-My-Zsh
 /oh-my-zsh-custom/plugins/*
 !/oh-my-zsh-custom/plugins/git/
-!/oh-my-zsh-custom/plugins/external-tools/
-/oh-my-zsh-custom/plugins/external-tools/bin/
 
 # Custom
 /tmp/

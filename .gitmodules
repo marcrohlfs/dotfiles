@@ -8,9 +8,6 @@
 	path = oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
 	branch = master
-[submodule "oh-my-zsh-custom/plugins/external-tools/submodules/scripts"]
-	path = oh-my-zsh-custom/plugins/external-tools/submodules/scripts
-	url = https://github.com/marcrohlfs/scripts.git
 [submodule "oh-my-zsh-custom/themes/powerlevel10k"]
 	path = oh-my-zsh-custom/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git

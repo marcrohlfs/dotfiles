@@ -96,7 +96,6 @@ plugins=(
   colorize
   common-aliases
   direnv
-  external-tools
   extract
   git
   git-prompt
