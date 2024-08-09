@@ -13,3 +13,11 @@ git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" --plugin-dir dotbot-brew -c "${CONFIG}" "${@}"
+
+# Install additional packages on CoreMedia workstations.
+if [[ ${GIT_USER_EMAIL} == *coremedia.com ]]; then
+  echo 'Installing additional packages for CoreMedia workstation...'
+  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" \
+      --plugin-dir dotbot-brew \
+      -c install-coremedia.conf.yaml "${@}"
+fi

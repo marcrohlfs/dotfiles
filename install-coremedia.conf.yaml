@@ -1,0 +1,17 @@
+- brew:
+    - act
+    - awscli
+    - awsume
+    - dos2unix
+    - git-filter-repo
+    - gnu-sed
+    - hub
+    - jq
+    - nvm
+    - pandoc
+    - terraform
+    - xmlstarlet
+    - yarn
+
+- cask:
+    - chromedriver
