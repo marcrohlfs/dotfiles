@@ -72,6 +72,9 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=${HOME}/.oh-my-zsh-custom
 
+# Override commands provided by macOS with the GNU version if coreutils are installed.
+[[ -d /usr/local/opt/coreutils/libexec/gnubin ]] && export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+
 # Add Rancher Desktop binaries to the PATH if available/installed.
 [[ -d ${HOME}/.rd/bin ]] && export PATH="${HOME}/.rd/bin:${PATH}"
 

@@ -2,6 +2,7 @@
 
 - brew:
     - autojump
+    - coreutils
     - direnv
     - gh
     - git
