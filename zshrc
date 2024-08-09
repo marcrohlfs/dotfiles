@@ -111,7 +111,7 @@ plugins=(
 [[ -n $( command -v docker-compose ) ]] && plugins+=(docker-compose)
 [[ -n ${JIRA_URL} ]] && plugins+=(jira)
 [[ -d /usr/local/opt/nvm/ ]] && plugins+=(nvm)
-[[ -n ${ZSH_ADDITIONAL_PLUGINS[*]} ]] && plugins+=(${ZSH_ADDITIONAL_PLUGINS})
+[[ ${GIT_USER_EMAIL} == *coremedia.com ]] && plugins+=(coremedia)
 
 source $ZSH/oh-my-zsh.sh
 
