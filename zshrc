@@ -154,6 +154,9 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Override commands provided by macOS with the GNU version if coreutils are installed. OMZ must be loaded first!
+[[ -d /usr/local/opt/coreutils/libexec/gnubin ]] && export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+
 # Install Homebrew casks to the main /Applications directory (instead of ~/Applications)
 export HOMEBREW_CASK_OPTS='--appdir=/Applications'
 
