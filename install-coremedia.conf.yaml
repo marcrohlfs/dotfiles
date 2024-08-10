@@ -15,6 +15,7 @@
 
 - cask:
     - chromedriver
+    - sencha
 
 - git:
     ~/.oh-my-zsh-custom/plugins/coremedia/checkout/ci-ssh:
