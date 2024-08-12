@@ -15,3 +15,15 @@
 
 - cask:
     - chromedriver
+    - sencha
+
+- git:
+    ~/.oh-my-zsh-custom/plugins/coremedia/checkout/ci-ssh:
+      url: https://github.com/CoreMedia/tooling.cli-scripts.git
+      branch: ci-ssh
+    ~/.oh-my-zsh-custom/plugins/coremedia/checkout/ci-trigger:
+      url: https://github.com/CoreMedia/tooling.cli-scripts.git
+      branch: ci-trigger
+    ~/.oh-my-zsh-custom/plugins/coremedia/checkout/pr-integrate:
+      url: https://github.com/CoreMedia/tooling.cli-scripts.git
+      branch: pr-integrate

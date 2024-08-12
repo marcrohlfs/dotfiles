@@ -19,5 +19,6 @@ if [[ ${GIT_USER_EMAIL} == *coremedia.com ]]; then
   echo 'Installing additional packages for CoreMedia workstation...'
   "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" \
       --plugin-dir dotbot-brew \
+      --plugin-dir dotbot-git \
       -c install-coremedia.conf.yaml "${@}"
 fi

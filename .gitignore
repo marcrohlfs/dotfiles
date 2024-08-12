@@ -11,9 +11,9 @@
 # Mac
 .DS_Store
 
-# Oh-My-Zsh
-/oh-my-zsh-custom/plugins/*
-!/oh-my-zsh-custom/plugins/git/
+# Scripts from internal repos in CoreMedia Plugin for Oh My Zsh
+/oh-my-zsh-custom/plugins/coremedia/bin/
+/oh-my-zsh-custom/plugins/coremedia/checkout/
 
 # Custom
 /tmp/
