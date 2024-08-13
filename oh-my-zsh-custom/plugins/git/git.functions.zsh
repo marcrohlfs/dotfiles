@@ -48,6 +48,51 @@ function gdfv() {
 }
 compdef _git gdfv=git-diff
 
+# Rebase local branches onto the latest remote of their base branch and also update the local base branch itself.
+function git_update_local_branches() {
+  git fetch --all --no-tags
+
+  declare -a base_branches rebase_branches
+  for branch in $( git for-each-ref --format='%(refname)' refs/heads/ ); do
+    simple_branch=$( echo ${branch} | sed 's/refs\/heads\///' )
+    if [[ ${simple_branch} =~ ^(${GIT_PROTECTED_BRANCH_PATTERNS})$ ]]; then
+      base_branches+=(${simple_branch})
+    else
+      rebase_branches+=(${simple_branch})
+    fi
+  done
+
+  if [[ -n "${1}" ]]; then
+    base_branches=(${1})
+  fi
+
+  local base_branch
+  if [[ ${#base_branches} != 1 ]]; then
+    echo "Expecting exactly one base but found ${#base_branches[*]}: ${base_branches}"
+    echo "Please specify the base branch manually: ${0} [base_branch]"
+    return 1
+  fi
+  base_branch=${base_branches[*]}
+
+  for rebase_branch in ${rebase_branches[*]}; do
+    if git merge-base --is-ancestor ${rebase_branch} origin/${base_branch}; then
+      echo "-> Deleting because already merged into origin/${base_branch}: ${rebase_branch}"
+      git branch --delete --force ${rebase_branch} || return 1
+    elif git merge-base --is-ancestor origin/${base_branch} ${rebase_branch}; then
+      echo "-> Obsolete because already rebased onto origin/${base_branch}: ${rebase_branch}"
+    elif ! git merge-base --is-ancestor ${base_branch} ${rebase_branch}; then
+      echo "-> Ignoring because not based on ${base_branch}: ${rebase_branch}"
+    else
+      echo "-> Rebasing onto origin/${base_branch}: ${rebase_branch}"
+      git rebase origin/${base_branch} ${rebase_branch} || return 1
+    fi
+  done
+
+  echo "-> Updating ${base_branch} to origin/${base_branch}"
+  git checkout ${base_branch}
+  git merge --ff-only origin/${base_branch} || return 1
+}
+
 # Interactively rebase the last n (up to 999) commits or whatever standard args apply
 function grbi() {
   if [[ "${1}" =~ ^[0-9]{1,3}$ ]]; then
