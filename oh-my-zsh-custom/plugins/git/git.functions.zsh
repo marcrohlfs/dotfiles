@@ -91,6 +91,7 @@ function git_update_local_branches() {
   echo "-> Updating ${base_branch} to origin/${base_branch}"
   git checkout ${base_branch}
   git merge --ff-only origin/${base_branch} || return 1
+  echo "-> Successfully updated local branches based on ${base_branch}."
 }
 
 # Interactively rebase the last n (up to 999) commits or whatever standard args apply
