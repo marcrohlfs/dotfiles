@@ -173,3 +173,8 @@ else
   echo "  curl -s \"https://get.sdkman.io\" | zsh"
   echo
 fi
+
+# pnpm
+export PNPM_HOME="/Users/mrohlfs/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
