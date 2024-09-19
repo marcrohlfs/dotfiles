@@ -93,6 +93,7 @@ fi
 plugins=(
   aliases
   autojump
+  brew
   colorize
   common-aliases
   direnv
@@ -110,7 +111,7 @@ plugins=(
 [[ -n $( command -v docker ) ]] && plugins+=(docker)
 [[ -n $( command -v docker-compose ) ]] && plugins+=(docker-compose)
 [[ -n ${JIRA_URL} ]] && plugins+=(jira)
-[[ -d /usr/local/opt/nvm/ ]] && plugins+=(nvm)
+[[ -d /opt/homebrew/opt/nvm/ || -d /usr/local/opt/nvm/ ]] && plugins+=(nvm)
 [[ ${GIT_USER_EMAIL} == *coremedia.com ]] && plugins+=(coremedia)
 
 source $ZSH/oh-my-zsh.sh
@@ -155,7 +156,7 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Override commands provided by macOS with the GNU version if coreutils are installed. OMZ must be loaded first!
-[[ -d /usr/local/opt/coreutils/libexec/gnubin ]] && export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+[[ -d ${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin ]] && export PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:${PATH}"
 
 # Install Homebrew casks to the main /Applications directory (instead of ~/Applications)
 export HOMEBREW_CASK_OPTS='--appdir=/Applications'

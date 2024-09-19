@@ -13,6 +13,6 @@ source "${git_plugin_dir}/git.config.zsh"
 unset git_plugin_dir
 
 # Disable completions from (Homebrew) Git installations
-mkdir -p /usr/local/share/zsh/site-functions/disabled
-find /usr/local/share/zsh/site-functions -path '*git*' -depth 1 \
-    -exec mv -fv {} /usr/local/share/zsh/site-functions/disabled/ \;
+mkdir -p ${HOMEBREW_PREFIX}/share/zsh/site-functions/disabled
+find ${HOMEBREW_PREFIX}/share/zsh/site-functions -path '*git*' -depth 1 \
+    -exec mv -fv {} ${HOMEBREW_PREFIX}/share/zsh/site-functions/disabled/ \;
