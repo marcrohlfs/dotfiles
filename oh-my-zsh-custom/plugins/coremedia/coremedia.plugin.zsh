@@ -10,6 +10,7 @@ source "${plugin_dir}/maven.zsh"
 source "${plugin_dir}/sencha.zsh"
 
 # Add scripts to PATH
+mkdir -p ${plugin_dir}/bin
 ln -sfn ${plugin_dir}/checkout/ci-ssh/ci-ssh.bash ${plugin_dir}/bin/ci-ssh
 ln -sfn ${plugin_dir}/checkout/ci-trigger/ci-trigger.bash ${plugin_dir}/bin/ci-trigger
 ln -sfn ${plugin_dir}/checkout/pr-integrate/pr-integrate.bash ${plugin_dir}/bin/pr-integrate
