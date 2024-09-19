@@ -171,7 +171,7 @@ if [ -d "$SDKMAN_DIR" ]; then
 else
   echo
   echo "SDKMAN! is not installed. Please call:"
-  echo "  curl -s \"https://get.sdkman.io\" | zsh"
+  echo "  curl -s \"https://get.sdkman.io\" | bash"
   echo
 fi
 
