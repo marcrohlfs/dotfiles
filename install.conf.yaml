@@ -23,9 +23,9 @@
     ~/.sdkman/etc/config:
       path: sdkman/etc/config
       create: true
-    ~/.ssh:
-      path: ssh
-      relink: true
+    ~/.ssh/config:
+      path: ssh/config
+      create: true
     ~/.vimrc:
       path: vimrc
     ~/.zshrc:
