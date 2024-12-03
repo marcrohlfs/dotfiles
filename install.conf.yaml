@@ -20,6 +20,9 @@
       relink: true
     ~/.p10k.zsh:
       path: p10k.zsh
+    ~/.sdkman/etc/config:
+      path: sdkman/etc/config
+      create: true
     ~/.ssh:
       path: ssh
       relink: true
