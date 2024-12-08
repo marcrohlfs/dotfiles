@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+# Init env vars
+BACKUP_HOST=$(hostname)
+BACKUP_DIR=${HOME}/Documents/backup/$(hostname)
+BACKUP_DATE=$(date +%Y-%m-%d_%H-%M-%S)
+BACKUP_FILE=${BACKUP_DATE}_backup.tar.gz
+BACKUP_LIST=${BACKUP_DATE}_backup-files.txt
+BACKUP_LIST_DOTFILES=${BACKUP_DATE}_backup-files_dotfiles.txt
+BACKUP_LIST_LIBRARY=${BACKUP_DATE}_backup-files_library.txt
+BACKUP_LIST_PROJECTS=${BACKUP_DATE}_backup-files_projects.txt
+BACKUP_LIST_ALL_PATTERN=${BACKUP_DATE}_backup-files_*.txt
+
+echo "Collecting (selected) user files for backup..."
+
+find ${HOME}/.* -type f -size +0 \
+    | grep -v \
+        -e "^${HOME}/\.CFUserTextEncoding$" \
+        -e "^${HOME}/\.Trash/" \
+        -e "^${HOME}/\.config/github-copilot/iu/chat-sessions/" \
+        -e "^${HOME}/\.dotfiles/" \
+        -e "^${HOME}/\.kuberlr/.*/" \
+        -e "^${HOME}/\.npm/_.*/" \
+        -e "^${HOME}/\.rewrite-cache/" \
+        -e "^${HOME}/\.sdkman/" \
+        -e "^${HOME}/\.sonar\(lint\)*/.*/" \
+        -e "^${HOME}/\.vscode/extensions/.*/" \
+        -e "^${HOME}/\.zcompdump.*" \
+        -e '/\.localized$' \
+        -e '\.jar$' \
+        -e '\.log$' \
+        -e '~$' \
+        -e '/\.#' \
+        -e '/\.cache/' \
+        -e '/cache/' \
+        -e '/caches/' \
+        -e '/repository.*/' \
+        -e '/wrapper/' \
+    > ${TMPDIR}/${BACKUP_LIST_DOTFILES}
+
+find ${HOME}/Library -type f -size +0 \
+    | grep \
+        -e "^${HOME}/Library/autojump/" \
+        -e "^${HOME}/Library/Fonts/" \
+        -e "^${HOME}/Library/Application\ Support/JetBrains/" \
+        -e "^${HOME}/Library/Preferences/" \
+    | grep -v \
+        -e "^${HOME}/Library/Application\ Support/JetBrains/.*/javascript/" \
+        -e "^${HOME}/Library/Application\ Support/JetBrains/.*/plugins/" \
+        -e "^${HOME}/Library/Application\ Support/JetBrains/.*/settingsSync/" \
+        -e "^${HOME}/Library/Application\ Support/JetBrains/.*/tasks/" \
+    > ${TMPDIR}/${BACKUP_LIST_LIBRARY}
+
+find ${HOME}/projects ${HOME}/.dotfiles -type f -size +0 \
+    | grep \
+        -e "/\.envrc$" \
+        -e "/\.idea/" \
+        -e "/tmp/" \
+    > ${TMPDIR}/${BACKUP_LIST_PROJECTS}
+
+cat ${TMPDIR}/${BACKUP_LIST_ALL_PATTERN} \
+    | grep -v \
+        -e '/\.DS_Store$' \
+        -e '\.bak$' \
+        -e '\.lock$' \
+    | grep "^${HOME}/" \
+    | sed "s|^${HOME}/||" \
+    | sort \
+    > ${TMPDIR}/${BACKUP_LIST}
+
+echo "Backing up $( cat ${TMPDIR}/${BACKUP_LIST} | wc -l ) files..."
+
+tar --create \
+    --gzip \
+    --directory ${HOME} \
+    --files-from ${TMPDIR}/${BACKUP_LIST} \
+    --file ${TMPDIR}/${BACKUP_FILE}
+
+mkdir -p ${BACKUP_DIR}
+mv ${TMPDIR}/${BACKUP_LIST} ${BACKUP_DIR}/${BACKUP_LIST}
+mv ${TMPDIR}/${BACKUP_FILE} ${BACKUP_DIR}/${BACKUP_FILE}
+
+echo "Created backup files ${BACKUP_LIST} and ${BACKUP_FILE} in ${BACKUP_DIR}."
