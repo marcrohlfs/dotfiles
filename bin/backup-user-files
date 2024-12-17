@@ -2,7 +2,7 @@
 
 # Init env vars
 BACKUP_HOST=$(hostname)
-BACKUP_DIR=${HOME}/Documents/backup/$(hostname)
+BACKUP_DIR=$( readlink --canonicalize ${HOME}/Documents/../backup/$(hostname) )
 BACKUP_DATE=$(date +%Y-%m-%d_%H-%M-%S)
 BACKUP_FILE=${BACKUP_DATE}_backup.tar.gz
 BACKUP_LIST=${BACKUP_DATE}_backup-files.txt
